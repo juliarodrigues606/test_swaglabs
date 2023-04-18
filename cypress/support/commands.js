@@ -1,4 +1,5 @@
 const loginElements = require('./resources/pages/login/login_page').ELEMENTS_LOGIN;
+const menuElements = require('./resources/pages/menu/menu_page').ELEMENTS_MENU;
 // ***********************************************
 // This example commands.js shows you how to
 // create various custom commands and overwrite
