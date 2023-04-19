@@ -15,4 +15,24 @@ describe('Suíte de teste para realizar login', () => {
       cy.get(loginElements.btnLogin).click()
       cy.url().should('include', '/inventory')
     })
+
+    it('Não deve realizar login ao enviar password incorreta', () => {
+      cy.get(loginElements.inputUsername).should('have.attr','placeholder','Username')
+      cy.get(loginElements.inputUsername).type(user.username)
+      cy.get(loginElements.inputPassword).should('have.attr','placeholder','Password')
+      cy.get(loginElements.inputPassword).type('user.password')
+      cy.get(loginElements.btnLogin).should('have.value','Login')
+      cy.get(loginElements.btnLogin).click()
+      cy.get(loginElements.msnError).should('have.text','Epic sadface: Username and password do not match any user in this service')
+    })
+
+    it.only('Não deve realizar login ao enviar username incorreto', () => {
+      cy.get(loginElements.inputUsername).should('have.attr','placeholder','Username')
+      cy.get(loginElements.inputUsername).type('user.username')
+      cy.get(loginElements.inputPassword).should('have.attr','placeholder','Password')
+      cy.get(loginElements.inputPassword).type(user.password)
+      cy.get(loginElements.btnLogin).should('have.value','Login')
+      cy.get(loginElements.btnLogin).click()
+      cy.get(loginElements.msnError).should('have.text','Epic sadface: Username and password do not match any user in this service')
+    })
   })
