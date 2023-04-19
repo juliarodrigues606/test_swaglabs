@@ -1,3 +1,4 @@
+import user from '../fixtures/user.json'
 const loginElements = require('./resources/pages/login/login_page').ELEMENTS_LOGIN;
 const menuElements = require('./resources/pages/menu/menu_page').ELEMENTS_MENU;
 // ***********************************************
@@ -13,8 +14,8 @@ const menuElements = require('./resources/pages/menu/menu_page').ELEMENTS_MENU;
 //
 // -- This is a parent command --
 Cypress.Commands.add('realizarLogin', () => { 
-    cy.get(loginElements.inputUsername).type('standard_user')
-    cy.get(loginElements.inputPassword).type('secret_sauce')
+    cy.get(loginElements.inputUsername).type(user.username)
+    cy.get(loginElements.inputPassword).type(user.password)
     cy.get(loginElements.btnLogin).click()
  })
 
